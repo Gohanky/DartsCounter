@@ -1,5 +1,7 @@
 package deran.dartscounter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,29 @@ public class startscreenfrag extends Fragment implements AdapterView.OnItemSelec
     private static Spinner spinner2;
     private static int player_counter_var;
 
+    //Communication from Fragment to activity
+    PlayerCountListener pcCallback;
+
+    public interface PlayerCountListener{
+        public void PlayerCountSelection(int position);
+    }
+
+    @Override
+    public void onAttach(Activity activity){
+        super.onAttach(activity);
+
+        //Activity activity;
+        //if (context instanceof Activity){
+        //    activity=(Activity) context;
+        //}
+
+        try{
+            pcCallback = (PlayerCountListener) activity;
+        } catch(ClassCastException e){
+            throw new ClassCastException(activity.toString()
+                    + "must implement PlayerCountListener");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -72,12 +97,13 @@ public class startscreenfrag extends Fragment implements AdapterView.OnItemSelec
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        switch (view.getId()) {
+        switch (parent.getId()) {
 
             case R.id.spinner:
                 // do your code
                 player_counter_var= Integer.parseInt(String.valueOf(parent.getItemAtPosition(pos)));
                 // irgendwie den integer weitergeben um fragment mit x edit texts zu erstellen
+                pcCallback.PlayerCountSelection(player_counter_var);
                 break;
 
             case R.id.spinner2:
@@ -96,6 +122,8 @@ public class startscreenfrag extends Fragment implements AdapterView.OnItemSelec
             case R.id.spinner:
                 // do your code
                 player_counter_var=1;
+                pcCallback.PlayerCountSelection(player_counter_var);
+
                 break;
 
             case R.id.spinner2:
