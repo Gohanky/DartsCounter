@@ -43,7 +43,7 @@ public class EnterPlayerNames extends Fragment {
         List DynamicViews = new ArrayList();//Liste die mit Views gefüllt werden kann um diese in einer schleife zum layout hinzuzufügen
         //layout zur dynamischen erstellung von views im fragment
         LinearLayout linearLayout = new LinearLayout(getActivity());
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         linearLayout.setLayoutParams(layoutParams);
         linearLayout.setOrientation(LinearLayout.VERTICAL); //or HORIZONTAL
 

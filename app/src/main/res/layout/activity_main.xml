@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="deran.dartscounter.MainActivity">
+    tools:context="deran.dartscounter.MainActivity"
+    android:background="?android:windowBackground">
 
     <TextView
         android:text="Test"
@@ -25,6 +26,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/frameLayout1"
+        android:background="?android:windowBackground"
         >
 
     </FrameLayout>
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/frameLayout1"
         android:id="@+id/frameLayout2"
+        android:background="?android:windowBackground"
         >
 
     </FrameLayout>

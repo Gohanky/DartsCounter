@@ -28,10 +28,11 @@ public class startscreenfrag extends Fragment implements AdapterView.OnItemSelec
     private static int player_counter_var;
 
     //Communication from Fragment to activity
-    PlayerCountListener pcCallback;
+    StartscreenfragListener pcCallback,gmCallback;
 
-    public interface PlayerCountListener{
+    public interface StartscreenfragListener{
         public void PlayerCountSelection(int position);
+        public void GamemodeSelection(int position);
     }
 
     @Override
@@ -44,7 +45,8 @@ public class startscreenfrag extends Fragment implements AdapterView.OnItemSelec
         //}
 
         try{
-            pcCallback = (PlayerCountListener) activity;
+            pcCallback = (StartscreenfragListener) activity;
+            gmCallback = (StartscreenfragListener) activity;
         } catch(ClassCastException e){
             throw new ClassCastException(activity.toString()
                     + "must implement PlayerCountListener");
@@ -108,6 +110,7 @@ public class startscreenfrag extends Fragment implements AdapterView.OnItemSelec
 
             case R.id.spinner2:
                 // do your code
+                gmCallback.GamemodeSelection(Integer.parseInt(String.valueOf(parent.getItemAtPosition(pos))));
                 break;
             default:
                 break;
@@ -128,6 +131,7 @@ public class startscreenfrag extends Fragment implements AdapterView.OnItemSelec
 
             case R.id.spinner2:
                 // do your code
+                gmCallback.GamemodeSelection(301);
                 break;
             default:
                 break;
